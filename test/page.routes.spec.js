@@ -34,7 +34,11 @@ describe('http requests', function () {
   });
 
   describe('POST /wiki', function () {
-    it('responds with 302');
+    it('responds with 302',function(){
+    	agent
+	.post('/some/route')
+	.send({someProp: 'someString'});
+    });
     it('creates a page in the database');
   });
 
