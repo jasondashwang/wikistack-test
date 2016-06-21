@@ -16,16 +16,32 @@ describe('http requests', function () {
   });
 
   describe('GET /wiki/add', function () {
-    it('responds with 200');
+    it('responds with 200', function(done){
+       agent
+      .get('/wiki/add')
+      .expect(200, done);
+    });
   });
 
   describe('GET /wiki/:urlTitle', function () {
-    it('responds with 404 on page that does not exist');
-    it('responds with 200 on page that does exist');
+    it('responds with 404 on page that does not exist', function(done){
+       agent
+      .get('/wiki/:dinosaurs')
+      .expect(404, done);
+    });
+    it('responds with 200 on page that does exist', function (done){
+      agent
+      .get('/wiki/monkeys')
+      .expect(200, done);
+    });
   });
 
   describe('GET /wiki/search', function () {
-    it('responds with 200');
+    it('responds with 200', function (done){
+      agent
+      .get('/wiki/search')
+      .expect(200, done);
+    });
   });
 
   describe('GET /wiki/:urlTitle/similar', function () {
