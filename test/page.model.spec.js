@@ -61,8 +61,8 @@ describe('Models', function(){
         var createdUser;
         beforeEach(function(done){
             User.create({
-                    title: 'dinosaurs are cool',
-                    content: 'hi there!!!'
+                    name: 'julia',
+                    email: 'julia.julia@yahoo.com'
             }).then(function(user){
                 createdUser = user;
                 done();
@@ -79,7 +79,15 @@ describe('Models', function(){
             });
         });
 
-
-
+        it ('it should insert correctly',function(done){
+            User.findOne({
+            where:{
+                id:createdUser.id
+                }
+            }).then(function(user){
+                expect(user).to.not.equal(undefined);
+                done();
+            });
+        });
     });
 });
